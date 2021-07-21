@@ -1,10 +1,12 @@
 import React from 'react';
+import NavBar from "./NavBar";
 
 function Header(){
+
     return (
-        <header>
-            <h1>Titulo de mi react app</h1>
-            <h4>Descripcion general de mi react app...</h4>
+        <header className="header">
+            <h5 id="atention">Atencion! Ahora tenemos prmociones para clientes de empresas.</h5>
+            <NavBar/>
         </header>
     );
 }
