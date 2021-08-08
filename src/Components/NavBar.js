@@ -1,14 +1,14 @@
 import React from 'react';
-import CartWidget from './CartWidget'
+import CartWidget from './Shop/CartWidget'
 
 function Navigation() {
   return (
         <nav className="navBar">
-            <CartWidget/>
             <a href="/">Pedir</a> |
             <a href="/"> Nuestras Sucursales</a> |
             <a href="/"> Promos</a> |
             <a href="/"> Imperdibles</a>
+            <CartWidget/>
         </nav>
   );
 }
