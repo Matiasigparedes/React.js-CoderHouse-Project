@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import ItemDetail from '../ItemDetail/ItemDetail';
 
 function ItemCount({stock, initial, onAdd}){
 
