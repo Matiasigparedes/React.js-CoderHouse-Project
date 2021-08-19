@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ItemCounter from '../ItemCounter/ItemCounter';
 
-//rcf
+// Mis componentes
+import ItemCounter from '../ItemCounter/ItemCounter';
+//importo el contexto a usar (estado global)
+import {CartContext} from '../store/CartContext'
+
 const ItemDetail = ({ producto }) => {
 
-  const [cantidadDefinida, setCantidadDefinida] = useState(0);
+  //destructuro mi objeto y traigo lo que necesite de mi estado global
+  //utilizo useContext y entre parentesis le paso el contexto del cual quiero traer mi data
+  const {addItem, editCart, isInCart} = useContext(CartContext);
+  
+  const agregarAlCarrito = () => {
+    if (isInCart(producto.id)) {
+      editCart({...producto, cantidad: cantidadDefinida});
+    } else{
+      addItem({...producto, cantidad: cantidadDefinida})
+    }
+  }
 
+  const [cantidadDefinida, setCantidadDefinida] = useState(0);
+  
   const onAdd = (cantidad) => {
     setCantidadDefinida(cantidad);
   };
