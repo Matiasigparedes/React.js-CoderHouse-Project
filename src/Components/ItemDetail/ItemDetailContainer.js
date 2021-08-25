@@ -7,6 +7,9 @@ import misProductos from "../../productos.json";
 
 function ItemDetailContainer() {
   const [producto, setProducto] = useState({});
+
+  const [cargando, setCargando] = useState(false);
+
   const { id: idProduct } = useParams();
 
   const getItems = () => {
@@ -23,12 +26,17 @@ function ItemDetailContainer() {
 
   useEffect(() => {
     setProducto({});
+    setCargando(false)
     getItems()
-      .then((res) => setProducto(res))
+      .then((res) => {
+        setProducto(res)
+        setCargando(true)
+      })
       .catch((acaHayError) => console.log(acaHayError));
   }, [idProduct]);
 
-  return <ItemDetail producto={producto} />;
+  return (
+  <ItemDetail producto={producto}/>)
 }
 
 export default ItemDetailContainer;

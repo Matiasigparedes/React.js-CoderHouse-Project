@@ -13,19 +13,16 @@ const ItemDetail = ({ producto }) => {
   //destructuro mi objeto y traigo lo que necesite de mi estado global
   //utilizo useContext y entre parentesis le paso el contexto del cual quiero traer mi data
   const {addItem, editCart, isInCart} = useContext(CartContext);
-  
-  const agregarAlCarrito = () => {
-    if (isInCart(producto.id)) {
-      editCart({...producto, cantidad: cantidadDefinida});
-    } else{
-      addItem({...producto, cantidad: cantidadDefinida})
-    }
-  }
 
   const [cantidadDefinida, setCantidadDefinida] = useState(0);
   
   const onAdd = (cantidad) => {
     setCantidadDefinida(cantidad);
+    if (isInCart(producto.id)) {
+      editCart({...producto, cantidad: cantidad});
+    } else{
+      addItem({...producto, cantidad: cantidad});
+    }
   };
 
   return (

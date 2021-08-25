@@ -23,6 +23,8 @@ const CartContextProvider = ({ children }) => {
     return verificar.length > 0;
   };
 
+  console.log(cart);
+
   //funcion para editar la cantidad si ya se encuentra
   const editCart = (itemEditado) => {
     const editado = cart.map((item) =>
@@ -42,6 +44,13 @@ const CartContextProvider = ({ children }) => {
     setCart(newCart);
   };
 
+  //funcion para sumar total productos
+  const sumaTotal = () => {
+    let total = 0
+    cart.map(item => total += item.cantidad * item.precio)
+    return total
+  }
+
   //creo un objeto para ir agregando todo lo que quiera tener en mi estado global
   //puedo pasar array, objetos o funciones
   const values = {
@@ -51,7 +60,8 @@ const CartContextProvider = ({ children }) => {
     isInCart,
     editCart,
     clear,
-    deleteItem
+    deleteItem,
+    sumaTotal
   };
 
   //retorno el context provider y en value le asigno los valores de mi estado global

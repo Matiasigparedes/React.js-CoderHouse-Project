@@ -10,6 +10,10 @@ const Nav = () => {
       <Link className="d-block" to="/category/2">
         Categoria dos
       </Link>
+      <Link to="/cart">
+        <img src="" alt="" />
+        carrito
+      </Link>
     </>
   );
 };
