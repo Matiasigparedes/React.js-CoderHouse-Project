@@ -9,7 +9,6 @@ export default function Cart() {
 
     return (
         <div className="d-flex flex-wrap">
-            <img src={process.env.PUBLIC_URL + '/images/Shop.png'} />;
             {
                 cart.length ? (
                     cart.map(item => <ItemCart producto = {item} key = {item.id} deleteItem = {deleteItem}/>)
